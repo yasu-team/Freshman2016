@@ -1,0 +1,23 @@
+{
+  "name": "freshman2016",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yasu-team/Freshman2016.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yasu-team/Freshman2016/issues"
+  },
+  "homepage": "https://github.com/yasu-team/Freshman2016#readme",
+  "devDependencies": {
+  "gulp": "^3.9.1",
+    "browser-sync": "^2.11.2",
+  }
+}
