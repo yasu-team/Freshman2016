@@ -1,29 +1,31 @@
 const gulp = require('gulp')
 const browserSync = require('browser-sync')
-const webpack = require('webpack')
+const browserify = require('browserify')
+const vueify = require('vueify')
+const fs = require('fs')
 
 gulp.task('browser-sync', function() {
   browserSync({
     notify: false,
     server: {
-      baseDir: "",
-      index: "index.html"
+      baseDir: '',
+      index: 'index.html'
     }
   })
 })
 
-gulp.task('bs-reload', function () {
+gulp.task('bs-reload', function() {
   browserSync.reload()
 })
 
-gulp.task('webpack', function() {
-  gulp.src('./src/main.js')
-    .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('./build'))
+gulp.task('vueify', function() {
+  browserify('./src/main.js')
+    .transform(vueify)
+    .bundle()
+    .pipe(fs.createWriteStream('build/build.js'))
 })
 
-gulp.task('default', ['browser-sync'], function() {
-  gulp.watch("./*.html", ['bs-reload'])
-  gulp.watch("./build/*.js", ['bs-reload', 'webpack'])
-  gulp.watch("./src/*.js", ['webpack'])
+gulp.task('default', ['browser-sync', 'vueify'], function() {
+  gulp.watch(['./*.html', './build/*.js'], ['bs-reload'])
+  gulp.watch(['src/*.js', 'src/**/*.js', 'components/**/*.vue'], ['vueify'])
 })
