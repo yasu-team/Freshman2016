@@ -2,8 +2,13 @@
 #app
   top(v-show="status==0")
   question(v-show="status==1")
-  result(v-show="status==2")
-  button(v-on:click='status++') 次へ
+  question(v-show="status==2")
+  question(v-show="status==3")
+  question(v-show="status==4")
+  question(v-show="status==5")
+  result(v-show="status==6")
+  button(v-on:click="next()") 次へ
+  p {{status}}
 </template>
 
 <style lang="scss">
@@ -17,10 +22,20 @@
   question = require('./Question.vue')
   result = require('./Result.vue')
 
+  questions = [1, 2, 3, 4, 5]
+
   module.exports =
+
     data: ->
       status: 0
       answers: []
+      message: ""
+    methods: {
+      next: ->
+        console.log "最初: #{@status}"
+        @status = @status + 1
+        console.log "最後: #{@status}"
+    }
     components: {
       top, question, result
     }

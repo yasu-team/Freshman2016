@@ -10237,7 +10237,7 @@ exports.insert = function (css) {
 
 },{}],5:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n")
-var question, result, top;
+var question, questions, result, top;
 
 top = require('./Top.vue');
 
@@ -10245,12 +10245,22 @@ question = require('./Question.vue');
 
 result = require('./Result.vue');
 
+questions = [1, 2, 3, 4, 5];
+
 module.exports = {
   data: function() {
     return {
       status: 0,
-      answers: []
+      answers: [],
+      message: ""
     };
+  },
+  methods: {
+    next: function() {
+      console.log("最初: " + this.status);
+      this.status = this.status + 1;
+      return console.log("最後: " + this.status);
+    }
   },
   components: {
     top: top,
@@ -10260,12 +10270,12 @@ module.exports = {
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><result v-show=\"status==2\"></result><button v-on:click=\"status++\">次へ</button></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><question v-show=\"status==2\"></question><question v-show=\"status==3\"></question><question v-show=\"status==4\"></question><question v-show=\"status==5\"></question><result v-show=\"status==6\"></result><button v-on:click=\"next()\">次へ</button><p>{{status}}</p></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
-  var id = "/Users/yasu/Develop/Freshman2016/src/components/App.vue"
+  var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/App.vue"
   module.hot.dispose(function () {
     require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n"] = false
     document.head.removeChild(__vueify_style__)
@@ -10277,24 +10287,39 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"./Question.vue":6,"./Result.vue":7,"./Top.vue":8,"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],6:[function(require,module,exports){
-var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.blue {\n  color: #f00; }\n")
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.blue {\n  color: #f00; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0; }\n  /* line 11, stdin */\n  #question .question_field img {\n    width: 300px;\n    height: auto; }\n  /* line 15, stdin */\n  #question .question_field p {\n    position: relative;\n    top: -20px; }\n")
 module.exports = {
   data: function() {
     return {
+      no1: {
+        msg: "テニス",
+        image: "http://www.tennis-navi.jp/news/images/IMG_2292s.JPG"
+      },
+      no2: {
+        msg: "ラグビー",
+        image: "http://cdn.mainichi.jp/vol1/2015/12/20/20151220dd0phj000019000p/91.jpg"
+      },
       msg: 'question'
+    };
+  },
+  methods: function() {
+    return {
+      next: function() {
+        return this.status = this.status + 1;
+      }
     };
   }
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"question\"><h1 class=\"blue\">{{ msg }}</h1></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"question\"><h1 class=\"blue\">{{ msg }}</h1><div class=\"question_field\"><image src=\"{{no1.image}}\"></image><p>{{no1.msg}}</p></div><div class=\"question_field\"><image src=\"{{no2.image}}\"></image><p>{{no2.msg}}</p></div><button v-on:click=\"next()\">次へ</button></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
-  var id = "/Users/yasu/Develop/Freshman2016/src/components/Question.vue"
+  var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/Question.vue"
   module.hot.dispose(function () {
-    require("vueify-insert-css").cache["/* line 2, stdin */\n.blue {\n  color: #f00; }\n"] = false
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.blue {\n  color: #f00; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0; }\n  /* line 11, stdin */\n  #question .question_field img {\n    width: 300px;\n    height: auto; }\n  /* line 15, stdin */\n  #question .question_field p {\n    position: relative;\n    top: -20px; }\n"] = false
     document.head.removeChild(__vueify_style__)
   })
   if (!module.hot.data) {
@@ -10319,7 +10344,7 @@ if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
-  var id = "/Users/yasu/Develop/Freshman2016/src/components/Result.vue"
+  var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/Result.vue"
   module.hot.dispose(function () {
     require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n"] = false
     document.head.removeChild(__vueify_style__)
@@ -10341,12 +10366,12 @@ module.exports = {
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h1 class=\"red\">{{ msg }}</h1></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h1 class=\"red\">{{ msg }}</h1><h2>aaaaa</h2></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
-  var id = "/Users/yasu/Develop/Freshman2016/src/components/Top.vue"
+  var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/Top.vue"
   module.hot.dispose(function () {
     require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n"] = false
     document.head.removeChild(__vueify_style__)

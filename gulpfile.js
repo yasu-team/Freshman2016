@@ -27,5 +27,6 @@ gulp.task('vueify', function() {
 
 gulp.task('default', ['browser-sync', 'vueify'], function() {
   gulp.watch(['./*.html', './build/*.js'], ['bs-reload'])
-  gulp.watch(['src/*.js', 'src/**/*.js', 'components/**/*.vue'], ['vueify'])
+  gulp.watch(['src/*.js', 'src/components/*.vue'], ['vueify'])
 })
+

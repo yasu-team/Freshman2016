@@ -1,6 +1,7 @@
 <template lang="jade">
 #top
   h1(class="red") {{ msg }}
+  h2 aaaaa
 </template>
 
 <style lang="scss">
