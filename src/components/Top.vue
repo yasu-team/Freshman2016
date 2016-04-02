@@ -1,6 +1,7 @@
 <template lang="jade">
 #top
-  h1(class="red") {{ msg }}
+  h2(class="red") {{ msg }}
+  button(v-on:click='next') 次へ
 </template>
 
 <style lang="scss">
@@ -11,6 +12,11 @@
 
 <script lang="coffee">
   module.exports =
+    inherit: true
     data: ->
-      msg: 'top'
+      msg: 'スポーツが好きだ'
+    methods: {
+      next: ->
+        this.$dispatch('next')
+    }
 </script>
