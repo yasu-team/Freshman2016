@@ -24,6 +24,8 @@
       img {
         width: 300px;
         height: auto;
+        margin: 0;
+        padidng: 0;
       }
       .yes_or_no {
         width: 300px;
@@ -53,5 +55,11 @@
         this.$dispatch('yes')
       no: ->
         this.$dispatch('no')
+    }
+
+    events: {
+      'change_q': (image_src) ->
+        this.image = image_src
+        this.msg = "(≡￣♀￣≡)ドラえもんは好き？"
     }
 </script>

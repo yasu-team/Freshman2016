@@ -6,14 +6,20 @@
   question(v-show="status==3")
   question(v-show="status==4")
   question(v-show="status==5")
-  result(v-show="status==6")
-  button(v-on:click="next()") 次へ
-  p {{status}}
+  div(class="r_field")
+    result(v-show="status==6")
+    button(v-on:click="next()") 次へ
+    p {{status}}
 </template>
 
 <style lang="scss">
   .red {
     color: #f00
+  }
+  #app {
+    .r_field {
+      clear: both;
+    }
   }
 </style>
 
@@ -22,26 +28,28 @@
   question = require('./Question.vue')
   result = require('./Result.vue')
 
-  questions = [1, 2, 3, 4, 5]
-
   module.exports =
 
     data: ->
       status: 0
       answers: []
       message: ""
+
     methods: {
       next: ->
         console.log 3
-        @status = @status + 1
+        this.status +=1
     }
     events: {
       'next': ->
         console.log 3
       'yes': ->
         console.log 'yes'
+        this.status += 1
+        this.$broadcast('change_q', "http://articleimage.nicoblomaga.jp/image/56/2015/8/c/8c621fe2a6cf4e3526e4b8602786a808f9a897ac1423975008.jpg")
       'no': ->
         console.log 'no'
+        this.status += 1
     }
     components: {
       top, question, result

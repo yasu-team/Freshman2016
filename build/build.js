@@ -10236,16 +10236,14 @@ exports.insert = function (css) {
 }
 
 },{}],5:[function(require,module,exports){
-var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n")
-var question, questions, result, top;
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n\n/* line 6, stdin */\n#app .r_field {\n  clear: both; }\n")
+var question, result, top;
 
 top = require('./Top.vue');
 
 question = require('./Question.vue');
 
 result = require('./Result.vue');
-
-questions = [1, 2, 3, 4, 5];
 
 module.exports = {
   data: function() {
@@ -10258,7 +10256,7 @@ module.exports = {
   methods: {
     next: function() {
       console.log(3);
-      return this.status = this.status + 1;
+      return this.status += 1;
     }
   },
   events: {
@@ -10266,10 +10264,13 @@ module.exports = {
       return console.log(3);
     },
     'yes': function() {
-      return console.log('yes');
+      console.log('yes');
+      this.status += 1;
+      return this.$broadcast('change_q', "http://articleimage.nicoblomaga.jp/image/56/2015/8/c/8c621fe2a6cf4e3526e4b8602786a808f9a897ac1423975008.jpg");
     },
     'no': function() {
-      return console.log('no');
+      console.log('no');
+      return this.status += 1;
     }
   },
   components: {
@@ -10280,14 +10281,14 @@ module.exports = {
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><question v-show=\"status==2\"></question><question v-show=\"status==3\"></question><question v-show=\"status==4\"></question><question v-show=\"status==5\"></question><result v-show=\"status==6\"></result><button v-on:click=\"next()\">次へ</button><p>{{status}}</p></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><question v-show=\"status==2\"></question><question v-show=\"status==3\"></question><question v-show=\"status==4\"></question><question v-show=\"status==5\"></question><div class=\"r_field\"><result v-show=\"status==6\"></result><button v-on:click=\"next()\">次へ</button><p>{{status}}</p></div></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/App.vue"
   module.hot.dispose(function () {
-    require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n"] = false
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n\n/* line 6, stdin */\n#app .r_field {\n  clear: both; }\n"] = false
     document.head.removeChild(__vueify_style__)
   })
   if (!module.hot.data) {
@@ -10297,7 +10298,7 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"./Question.vue":6,"./Result.vue":7,"./Top.vue":8,"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],6:[function(require,module,exports){
-var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.q_title {\n  text-align: center; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0;\n  background: #ccc; }\n  /* line 12, stdin */\n  #question .q_field img {\n    width: 300px;\n    height: auto; }\n  /* line 16, stdin */\n  #question .q_field .yes_or_no {\n    width: 300px;\n    clear: both; }\n    /* line 18, stdin */\n    #question .q_field .yes_or_no > div {\n      width: 150px;\n      float: left;\n      margin: 0;\n      padding: 10px auto; }\n      /* line 23, stdin */\n      #question .q_field .yes_or_no > div:hover {\n        background: red; }\n")
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.q_title {\n  text-align: center; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0;\n  background: #ccc; }\n  /* line 12, stdin */\n  #question .q_field img {\n    width: 300px;\n    height: auto;\n    margin: 0;\n    padidng: 0; }\n  /* line 18, stdin */\n  #question .q_field .yes_or_no {\n    width: 300px;\n    clear: both; }\n    /* line 20, stdin */\n    #question .q_field .yes_or_no > div {\n      width: 150px;\n      float: left;\n      margin: 0;\n      padding: 10px auto; }\n      /* line 25, stdin */\n      #question .q_field .yes_or_no > div:hover {\n        background: red; }\n")
 module.exports = {
   data: function() {
     return {
@@ -10312,6 +10313,12 @@ module.exports = {
     no: function() {
       return this.$dispatch('no');
     }
+  },
+  events: {
+    'change_q': function(image_src) {
+      this.image = image_src;
+      return this.msg = "(≡￣♀￣≡)ドラえもんは好き？";
+    }
   }
 };
 
@@ -10323,7 +10330,7 @@ if (module.hot) {(function () {  module.hot.accept()
   if (!hotAPI.compatible) return
   var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/Question.vue"
   module.hot.dispose(function () {
-    require("vueify-insert-css").cache["/* line 2, stdin */\n.q_title {\n  text-align: center; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0;\n  background: #ccc; }\n  /* line 12, stdin */\n  #question .q_field img {\n    width: 300px;\n    height: auto; }\n  /* line 16, stdin */\n  #question .q_field .yes_or_no {\n    width: 300px;\n    clear: both; }\n    /* line 18, stdin */\n    #question .q_field .yes_or_no > div {\n      width: 150px;\n      float: left;\n      margin: 0;\n      padding: 10px auto; }\n      /* line 23, stdin */\n      #question .q_field .yes_or_no > div:hover {\n        background: red; }\n"] = false
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.q_title {\n  text-align: center; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0;\n  background: #ccc; }\n  /* line 12, stdin */\n  #question .q_field img {\n    width: 300px;\n    height: auto;\n    margin: 0;\n    padidng: 0; }\n  /* line 18, stdin */\n  #question .q_field .yes_or_no {\n    width: 300px;\n    clear: both; }\n    /* line 20, stdin */\n    #question .q_field .yes_or_no > div {\n      width: 150px;\n      float: left;\n      margin: 0;\n      padding: 10px auto; }\n      /* line 25, stdin */\n      #question .q_field .yes_or_no > div:hover {\n        background: red; }\n"] = false
     document.head.removeChild(__vueify_style__)
   })
   if (!module.hot.data) {
