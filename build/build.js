@@ -10252,6 +10252,11 @@ module.exports = {
       answers: []
     };
   },
+  events: {
+    next: function() {
+      return this.status++;
+    }
+  },
   components: {
     top: top,
     question: question,
@@ -10260,7 +10265,7 @@ module.exports = {
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><result v-show=\"status==2\"></result><button v-on:click=\"status++\">次へ</button></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><result v-show=\"status==2\"></result></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -10333,15 +10338,21 @@ if (module.hot) {(function () {  module.hot.accept()
 },{"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],8:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n")
 module.exports = {
+  inherit: true,
   data: function() {
     return {
-      msg: 'top'
+      msg: 'スポーツが好きだ'
     };
+  },
+  methods: {
+    next: function() {
+      return this.$dispatch('next');
+    }
   }
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h1 class=\"red\">{{ msg }}</h1></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h2 class=\"red\">{{ msg }}</h2><button v-on:click=\"next\">次へ</button></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

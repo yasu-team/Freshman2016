@@ -3,7 +3,6 @@
   top(v-show="status==0")
   question(v-show="status==1")
   result(v-show="status==2")
-  button(v-on:click='status++') 次へ
 </template>
 
 <style lang="scss">
@@ -21,6 +20,10 @@
     data: ->
       status: 0
       answers: []
+    events: {
+      next: ->
+        @status++
+    }
     components: {
       top, question, result
     }
