@@ -1,33 +1,42 @@
 <template lang="jade">
 #question
-  h1(class="blue") {{ msg }}
-  div(class="question_field")
-    image(src="{{no1.image}}")
-    p {{no1.msg}}
-  div(class="question_field")
-    image(src="{{no2.image}}")
-    p {{no2.msg}}
-
-  button(v-on:click="next()") 次へ
+  h1(class="q_title") {{msg}}
+  div(class="q_field")
+    image(src="{{image}}")
+    div(class="yes_or_no")
+      div(class="yes" v-on:click="yes()")
+        h3 yes
+      div(class="no" v-on:click="no()")
+        h3 no
 </template>
 
 <style lang="scss">
-  .blue {
-    color: #f00
+  .q_title {
+    text-align: center;
   }
 
   #question {
     width: 300px;
     margin: 0 auto;
     padding: 0;
-    .question_field {
+    background: #ccc;
+    .q_field {
       img {
         width: 300px;
-        height: auto
+        height: auto;
       }
-      p {
-        position: relative;
-        top: -20px;
+      .yes_or_no {
+        width: 300px;
+        & > div {
+          width: 150px;
+          float: left;
+          margin: 0;
+          padding: 10px auto;
+          &:hover {
+            background: red;
+          }
+        }
+        clear: both;
       }
     }
   }
@@ -36,15 +45,13 @@
 <script lang="coffee">
   module.exports =
     data: ->
-      no1:
-        msg: "テニス"
-        image: "http://www.tennis-navi.jp/news/images/IMG_2292s.JPG"
-      no2: 
-        msg: "ラグビー"
-        image: "http://cdn.mainichi.jp/vol1/2015/12/20/20151220dd0phj000019000p/91.jpg"
-      msg: 'question'
+      image: "http://shijonawate-aeonmall.com/files/shop/43/thumbW480_photo2.jpg"
+      msg: 'スポーツは好き？'
 
-    methods: ->
-      next: ->
-        @status = @status + 1
+    methods: {
+      yes: ->
+        this.$dispatch('yes')
+      no: ->
+        this.$dispatch('no')
+    }
 </script>

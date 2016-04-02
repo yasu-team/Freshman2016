@@ -10257,9 +10257,19 @@ module.exports = {
   },
   methods: {
     next: function() {
-      console.log("最初: " + this.status);
-      this.status = this.status + 1;
-      return console.log("最後: " + this.status);
+      console.log(3);
+      return this.status = this.status + 1;
+    }
+  },
+  events: {
+    'next': function() {
+      return console.log(3);
+    },
+    'yes': function() {
+      return console.log('yes');
+    },
+    'no': function() {
+      return console.log('no');
     }
   },
   components: {
@@ -10287,39 +10297,33 @@ if (module.hot) {(function () {  module.hot.accept()
   }
 })()}
 },{"./Question.vue":6,"./Result.vue":7,"./Top.vue":8,"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],6:[function(require,module,exports){
-var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.blue {\n  color: #f00; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0; }\n  /* line 11, stdin */\n  #question .question_field img {\n    width: 300px;\n    height: auto; }\n  /* line 15, stdin */\n  #question .question_field p {\n    position: relative;\n    top: -20px; }\n")
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.q_title {\n  text-align: center; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0;\n  background: #ccc; }\n  /* line 12, stdin */\n  #question .q_field img {\n    width: 300px;\n    height: auto; }\n  /* line 16, stdin */\n  #question .q_field .yes_or_no {\n    width: 300px;\n    clear: both; }\n    /* line 18, stdin */\n    #question .q_field .yes_or_no > div {\n      width: 150px;\n      float: left;\n      margin: 0;\n      padding: 10px auto; }\n      /* line 23, stdin */\n      #question .q_field .yes_or_no > div:hover {\n        background: red; }\n")
 module.exports = {
   data: function() {
     return {
-      no1: {
-        msg: "テニス",
-        image: "http://www.tennis-navi.jp/news/images/IMG_2292s.JPG"
-      },
-      no2: {
-        msg: "ラグビー",
-        image: "http://cdn.mainichi.jp/vol1/2015/12/20/20151220dd0phj000019000p/91.jpg"
-      },
-      msg: 'question'
+      image: "http://shijonawate-aeonmall.com/files/shop/43/thumbW480_photo2.jpg",
+      msg: 'スポーツは好き？'
     };
   },
-  methods: function() {
-    return {
-      next: function() {
-        return this.status = this.status + 1;
-      }
-    };
+  methods: {
+    yes: function() {
+      return this.$dispatch('yes');
+    },
+    no: function() {
+      return this.$dispatch('no');
+    }
   }
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"question\"><h1 class=\"blue\">{{ msg }}</h1><div class=\"question_field\"><image src=\"{{no1.image}}\"></image><p>{{no1.msg}}</p></div><div class=\"question_field\"><image src=\"{{no2.image}}\"></image><p>{{no2.msg}}</p></div><button v-on:click=\"next()\">次へ</button></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"question\"><h1 class=\"q_title\">{{msg}}</h1><div class=\"q_field\"><image src=\"{{image}}\"></image><div class=\"yes_or_no\"><div v-on:click=\"yes()\" class=\"yes\"><h3>yes</h3></div><div v-on:click=\"no()\" class=\"no\"><h3>no</h3></div></div></div></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   var id = "/Users/sakaihidenobu/beeapp/Freshman2016/src/components/Question.vue"
   module.hot.dispose(function () {
-    require("vueify-insert-css").cache["/* line 2, stdin */\n.blue {\n  color: #f00; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0; }\n  /* line 11, stdin */\n  #question .question_field img {\n    width: 300px;\n    height: auto; }\n  /* line 15, stdin */\n  #question .question_field p {\n    position: relative;\n    top: -20px; }\n"] = false
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.q_title {\n  text-align: center; }\n\n/* line 6, stdin */\n#question {\n  width: 300px;\n  margin: 0 auto;\n  padding: 0;\n  background: #ccc; }\n  /* line 12, stdin */\n  #question .q_field img {\n    width: 300px;\n    height: auto; }\n  /* line 16, stdin */\n  #question .q_field .yes_or_no {\n    width: 300px;\n    clear: both; }\n    /* line 18, stdin */\n    #question .q_field .yes_or_no > div {\n      width: 150px;\n      float: left;\n      margin: 0;\n      padding: 10px auto; }\n      /* line 23, stdin */\n      #question .q_field .yes_or_no > div:hover {\n        background: red; }\n"] = false
     document.head.removeChild(__vueify_style__)
   })
   if (!module.hot.data) {
@@ -10366,7 +10370,7 @@ module.exports = {
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h1 class=\"red\">{{ msg }}</h1><h2>aaaaa</h2></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h1 class=\"red\">{{ msg }}</h1></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

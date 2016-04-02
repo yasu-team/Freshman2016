@@ -32,9 +32,16 @@
       message: ""
     methods: {
       next: ->
-        console.log "最初: #{@status}"
+        console.log 3
         @status = @status + 1
-        console.log "最後: #{@status}"
+    }
+    events: {
+      'next': ->
+        console.log 3
+      'yes': ->
+        console.log 'yes'
+      'no': ->
+        console.log 'no'
     }
     components: {
       top, question, result
