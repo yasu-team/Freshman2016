@@ -10248,7 +10248,8 @@ result = require('./Result.vue');
 module.exports = {
   data: function() {
     return {
-      msg: 'Hello world!'
+      status: 0,
+      answers: []
     };
   },
   components: {
@@ -10259,7 +10260,7 @@ module.exports = {
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><h1 class=\"red\">{{ msg }}</h1><p>You are amazing</p><top></top><question></question><result></result></div>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><result v-show=\"status==2\"></result><button v-on:click=\"status++\">次へ</button></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

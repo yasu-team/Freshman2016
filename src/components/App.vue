@@ -1,10 +1,9 @@
 <template lang="jade">
 #app
-  h1.red {{ msg }}
-  p You are amazing
-  top
-  question
-  result
+  top(v-show="status==0")
+  question(v-show="status==1")
+  result(v-show="status==2")
+  button(v-on:click='status++') 次へ
 </template>
 
 <style lang="scss">
@@ -20,8 +19,8 @@
 
   module.exports =
     data: ->
-      msg: 'Hello world!'
-    # components: top: top
+      status: 0
+      answers: []
     components: {
       top, question, result
     }
