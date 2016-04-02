@@ -10237,16 +10237,35 @@ exports.insert = function (css) {
 
 },{}],5:[function(require,module,exports){
 var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n")
+var question, result, top;
+
+top = require('./Top.vue');
+
+question = require('./Question.vue');
+
+result = require('./Result.vue');
+
 module.exports = {
   data: function() {
     return {
-      msg: 'Hello world!'
+      status: 0,
+      answers: []
     };
+  },
+  events: {
+    next: function() {
+      return this.status++;
+    }
+  },
+  components: {
+    top: top,
+    question: question,
+    result: result
   }
 };
 
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<h1 class=\"red\">{{msg}}</h1>"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"app\"><top v-show=\"status==0\"></top><question v-show=\"status==1\"></question><result v-show=\"status==2\"></result></div>"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -10262,9 +10281,96 @@ if (module.hot) {(function () {  module.hot.accept()
     hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
-},{"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],6:[function(require,module,exports){
+},{"./Question.vue":6,"./Result.vue":7,"./Top.vue":8,"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],6:[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.blue {\n  color: #f00; }\n")
+module.exports = {
+  data: function() {
+    return {
+      msg: 'question'
+    };
+  }
+};
+
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"question\"><h1 class=\"blue\">{{ msg }}</h1></div>"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/yasu/Develop/Freshman2016/src/components/Question.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.blue {\n  color: #f00; }\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],7:[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n")
+module.exports = {
+  data: function() {
+    return {
+      msg: 'result'
+    };
+  }
+};
+
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"result\"><h1 class=\"red\">{{ msg }}</h1></div>"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/yasu/Develop/Freshman2016/src/components/Result.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],8:[function(require,module,exports){
+var __vueify_style__ = require("vueify-insert-css").insert("/* line 2, stdin */\n.red {\n  color: #f00; }\n")
+module.exports = {
+  inherit: true,
+  data: function() {
+    return {
+      msg: 'スポーツが好きだ'
+    };
+  },
+  methods: {
+    next: function() {
+      return this.$dispatch('next');
+    }
+  }
+};
+
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "<div id=\"top\"><h2 class=\"red\">{{ msg }}</h2><button v-on:click=\"next\">次へ</button></div>"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/yasu/Develop/Freshman2016/src/components/Top.vue"
+  module.hot.dispose(function () {
+    require("vueify-insert-css").cache["/* line 2, stdin */\n.red {\n  color: #f00; }\n"] = false
+    document.head.removeChild(__vueify_style__)
+  })
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"vue":3,"vue-hot-reload-api":2,"vueify-insert-css":4}],9:[function(require,module,exports){
 const Vue = require('vue')
 const appOptions = require('./components/App.vue')
 const app = new Vue(appOptions).$mount('#app')
 
-},{"./components/App.vue":5,"vue":3}]},{},[6]);
+},{"./components/App.vue":5,"vue":3}]},{},[9]);
